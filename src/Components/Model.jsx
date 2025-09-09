@@ -118,7 +118,7 @@ const Model = () => {
                         <div className="modal-footer">
                             <div className="d-flex justify-content-center">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Edit Product</button>
+                                <button type="submit" className="btn btn-success" data-bs-dismiss="modal">Edit Product</button>
                             </div>
                         </div>
                             </form>
