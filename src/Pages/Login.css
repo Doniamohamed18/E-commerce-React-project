@@ -1,0 +1,75 @@
+.login-container {
+  background-color: #f5f5dc; /* Beige background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
+}
+
+.login-card {
+  background-color: #8B4513; /* Chocolate brown */
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  color: #f5f5dc; /* Beige text */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #d2b48c; /* Tan */
+}
+
+.login-label {
+  color: #d2b48c; /* Tan */
+}
+
+.login-input {
+  background-color: #f5f5dc; /* Beige inputs */
+  border: 1px solid #d2b48c;
+  color: #8B4513; /* Chocolate text inside inputs */
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #a0522d; /* Sienna */
+  outline: none;
+  box-shadow: 0 0 5px #a0522d;
+}
+
+.login-btn {
+  background-color: #d2b48c; /* Tan button */
+  border: none;
+  color: #8B4513; /* Chocolate text */
+  font-weight: 600;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #a0522d; /* Darker sienna on hover */
+  color: #f5f5dc;
+}
+
+.login-footer {
+  color: #d2b48c;
+  font-size: 0.9rem;
+}
+
+.login-link {
+  color: #d2b48c;
+  font-weight: 600;
+}
+
+.login-link:hover {
+  color: #a0522d;
+  text-decoration: underline;
+}
