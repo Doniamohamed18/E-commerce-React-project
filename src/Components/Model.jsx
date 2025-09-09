@@ -30,9 +30,9 @@ const Model = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let { data } = await axios.post("http://localhost:3000/products", product)
+        let { data } = await axios.put("http://localhost:3000/products/" + id, product)
         setProduct(data)
-        toast.success("✅ Product added successfully!")
+        toast.success("✅ Product Edited successfully!")
         setTimeout(() => {
             navigate("/")
         }, 2000)
