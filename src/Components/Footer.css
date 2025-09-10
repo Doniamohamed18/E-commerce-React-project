@@ -1,0 +1,30 @@
+.custom-footer {
+  background-color: #8B4513; /* Saddle Brown */
+  color: #fff;
+}
+
+.custom-footer a,
+.custom-footer .footer-link {
+  color: #f5f5dc; /* Beige */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.custom-footer a:hover,
+.custom-footer .footer-link:hover {
+  color: #d2b48c; /* Tan */
+}
+
+.footer-title {
+  color: #d2b48c;
+}
+
+.social-section {
+  background-color: #8b4513;
+  color: #d2b48c;
+}
+
+.copyright {
+ background-color: #f7f4ef;
+  color: #8b4513;
+}

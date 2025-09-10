@@ -90,7 +90,7 @@ const Add = () => {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <label htmlFor="exampleInput5" className="form-label">Product Category</label>
           <input
             type="text"

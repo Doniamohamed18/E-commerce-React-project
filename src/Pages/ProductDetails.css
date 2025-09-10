@@ -1,0 +1,10 @@
+.demo{
+    background-color: #8B4513; 
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.demo:hover {
+  background-color: #d2b48c; 
+  color: #000;
+}

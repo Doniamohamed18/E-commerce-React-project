@@ -1,5 +1,8 @@
+body{
+  background-color: #f7f4ef; 
+}
+
 .profile-container {
-  background-color: #f5f5dc; 
   height: 100vh;
   display: flex;
   justify-content: center;
