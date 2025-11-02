@@ -36,7 +36,7 @@ const Add = () => {
 
   return (
     <div className="container mt-5" style={{ maxWidth: "600px", backgroundColor: "#f8f9fa", padding: "30px", borderRadius: "10px", boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}>
-      <h2 className='text-center mb-4' style={{ color: '#007bff' }}>🛒 Add New Product</h2>
+      <h2 className='text-center mb-4'>🛒 Add New Product</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInput1" className="form-label">Product Name</label>
@@ -103,7 +103,7 @@ const Add = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100">Add Product</button>
+        <button type="submit" className="btn btn-custom w-100">Add Product</button>
       </form>
     </div>
   )

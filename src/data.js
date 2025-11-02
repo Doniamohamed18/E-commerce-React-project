@@ -1,6 +1,5 @@
+const productsData = [
 {
-  "products": [
-    {
       "id": "1",
       "name": "Modern Sofa",
       "category": "Furniture",
@@ -160,5 +159,6 @@
       "image": "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YmVkfGVufDB8fDB8fHww",
       "category": "Furniture"
     }
-  ]
-}
+];
+
+export default productsData;

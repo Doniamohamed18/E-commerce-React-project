@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import Header from '../Components/Header';
 import Card from '../Components/Card';
-import axios from 'axios';
-import './Home.css'
-
+import productsData from '../data'; // استيراد البيانات المحلية
+import './Home.css';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function getData() {
-      const { data } = await axios.get("http://localhost:3000/products");
-      setProducts(data);
-    }
-    getData();
-  }, []);
-
- 
-  const filteredProducts = products.filter(p =>
+  
+  const filteredProducts = productsData.filter(p =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -52,7 +41,7 @@ const Home = () => {
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {filteredProducts.map(p => (
             <Card key={p.id} product={p}>
-              <button onClick={() => navigate(`/products/${p.id}`)}className="btn btn-custom w-100 mt-2 g-2">Show More</button>
+              <button onClick={() => navigate(`/products/${p.id}`)} className="btn btn-custom w-100 mt-2 g-2">Show More</button>
             </Card>
           ))}
         </div>
