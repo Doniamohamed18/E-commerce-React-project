@@ -1,7 +1,7 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
+import productsData from '../data'
 
 const Add = () => {
   const [product, setProduct] = useState({
@@ -20,18 +20,18 @@ const Add = () => {
     setProduct({ ...product, [name]: value })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    try {
-      await axios.post("http://localhost:3000/products", product)
-      toast.success("✅ Product added successfully!")
-      setTimeout(() => {
-        navigate("/")
-      }, 2000)
-    } catch (error) {
-      toast.error("❌ Failed to add product!")
-      console.error(error)
-    }
+
+    // نضيف المنتج في localStorage (بدل الـ API)
+    const existingProducts = JSON.parse(localStorage.getItem("products")) || productsData
+    const updatedProducts = [...existingProducts, product]
+    localStorage.setItem("products", JSON.stringify(updatedProducts))
+
+    toast.success("✅ Product added successfully!")
+    setTimeout(() => {
+      navigate("/")
+    }, 1500)
   }
 
   return (
@@ -39,11 +39,10 @@ const Add = () => {
       <h2 className='text-center mb-4'>🛒 Add New Product</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInput1" className="form-label">Product Name</label>
+          <label className="form-label">Product Name</label>
           <input
             type="text"
             className="form-control"
-            id="exampleInput1"
             value={product.name}
             onChange={handleChange}
             name="name"
@@ -52,11 +51,10 @@ const Add = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInput2" className="form-label">Product Price</label>
+          <label className="form-label">Product Price</label>
           <input
             type="number"
             className="form-control"
-            id="exampleInput2"
             value={product.price}
             onChange={handleChange}
             name="price"
@@ -65,10 +63,9 @@ const Add = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInput3" className="form-label">Product Details</label>
+          <label className="form-label">Product Details</label>
           <textarea
             className="form-control"
-            id="exampleInput3"
             value={product.body}
             onChange={handleChange}
             name="body"
@@ -78,11 +75,10 @@ const Add = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInput4" className="form-label">Product Image URL</label>
+          <label className="form-label">Product Image URL</label>
           <input
             type="text"
             className="form-control"
-            id="exampleInput4"
             value={product.image}
             onChange={handleChange}
             name="image"
@@ -91,11 +87,10 @@ const Add = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInput5" className="form-label">Product Category</label>
+          <label className="form-label">Product Category</label>
           <input
             type="text"
             className="form-control"
-            id="exampleInput5"
             value={product.category}
             onChange={handleChange}
             name="category"
