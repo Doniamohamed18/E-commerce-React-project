@@ -1,65 +1,54 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import Model from '../Components/Model';
-import DeleteModel from '../Components/DeleteModel';
-import { toast } from 'react-toastify';
+import productsData from '../data'; // ✅ بنجيب الداتا من الملف
 import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const { data } = await axios.get(`http://localhost:3000/products/${id}`);
-        setProduct(data);
-      } catch (err) {
-        console.error(err);
-        toast.error("Error fetching product");
-      }
-    }
-    getData();
-  }, [id]);
+  // ✅ نلاقي المنتج اللي الـ id بتاعه يطابق الموجود في الرابط
+  const product = productsData.find(p => p.id.toString() === id);
 
-  const handleDelete = async () => {
-    await axios.delete(`http://localhost:3000/products/${id}`);
-    toast.success("Product Deleted Successfully");
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
-  };
+  if (!product) {
+    return (
+      <div className="container text-center my-5">
+        <h2>⚠️ Product not found</h2>
+        <button className="btn btn-secondary mt-3" onClick={() => navigate('/')}>
+          Back to Products
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="container">
-      <h1 className='my-5 text-center'>Product Details</h1>
+    <div className="container my-5">
+      <h1 className="text-center mb-4">{product.name}</h1>
 
-      {!product ? (
-        <p className="text-center">Loading...</p>
-      ) : (
-        <div className="product-details text-center mx-auto" style={{ maxWidth: "600px" }}>
+      <div className="row justify-content-center">
+        <div className="col-md-6 text-center">
           <img
             src={product.image}
-            alt={product.title}
-            className="img-fluid rounded shadow"
-            style={{ width: "300px", height: "300px", objectFit: "cover" }}
+            alt={product.name}
+            className="img-fluid rounded shadow-sm mb-4"
           />
-          <h2 className="mt-3">{product.title}</h2>
-          <p className="text-muted">{product.description}</p>
-          <h4 className="">${product.price}</h4>
 
-          <div className="d-flex justify-content-center mt-4 gap-3">
-            <button onClick={() => navigate(`/`)} className="btn btn-custom px-4">Back</button>
-            {/* <button className="outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button> */}
-            <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Delete</button>
-          </div>
+          <h4 className="text-success mb-3">{product.price} EGP</h4>
+
+          <p className="text-muted mb-3">
+            <strong>Category:</strong> {product.category}
+          </p>
+
+          <p className="fs-5">{product.body}</p>
+
+          <button
+            className="btn btn-primary mt-4"
+            onClick={() => navigate('/')}
+          >
+            🔙 Back to Products
+          </button>
         </div>
-      )}
-
-      <Model />
-      <DeleteModel handleDelete={handleDelete} />
+      </div>
     </div>
   );
 };
